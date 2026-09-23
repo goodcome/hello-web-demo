@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="goodcome 的第一个在线网页。欢迎来看看，点一下，让好心情发生。">
+  <meta name="theme-color" content="#f5f3eb">
+  <title>你好，世界 · goodcome</title>
+  <style>
+    :root { color-scheme: light; font-family: "Segoe UI", "Microsoft YaHei", sans-serif; color: #202b27; background: #f5f3eb; }
+    * { box-sizing: border-box; }
+    body { margin: 0; min-height: 100svh; }
+    .page { width: min(1120px, 100%); margin: auto; padding: 30px 32px 24px; }
+    header, footer { display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+    .brand { font-size: 20px; font-weight: 800; letter-spacing: -.8px; }
+    .brand span { color: #6d8260; }
+    .status { display: inline-flex; gap: 8px; align-items: center; font-size: 12px; color: #556252; }
+    .status::before { content: ""; width: 7px; height: 7px; background: #658451; border-radius: 50%; }
+    main { display: grid; grid-template-columns: 1.2fr 1fr; align-items: center; gap: 50px; min-height: 620px; padding: 65px 0; }
+    .eyebrow { font-size: 12px; letter-spacing: 3px; font-weight: 600; color: #687764; margin: 0 0 28px; }
+    h1 { font-size: clamp(52px, 7vw, 88px); letter-spacing: -4px; line-height: 1.12; margin: 0 0 28px; font-weight: 800; }
+    h1 span { color: #70875e; }
+    .intro { color: #687069; font-size: 16px; line-height: 1.9; margin: 0 0 32px; }
+    button { border: 0; border-radius: 100px; padding: 16px 25px; background: #253d30; color: white; font: inherit; font-size: 14px; cursor: pointer; transition: background .2s, transform .2s; }
+    button:hover { background: #426047; transform: translateY(-2px); }
+    button:focus-visible { outline: 3px solid #839a6c; outline-offset: 5px; }
+    button span { display: inline-block; margin-left: 20px; }
+    #message { min-height: 48px; padding-top: 15px; font-size: 13px; line-height: 1.6; color: #5d7056; }
+    .art { position: relative; aspect-ratio: 1; width: 100%; max-width: 430px; justify-self: center; border: 1px solid #daddce; border-radius: 50% 50% 20px 20px; background: #e8ecdc; overflow: hidden; display: grid; place-items: center; }
+    .orbit { position: absolute; width: 78%; height: 78%; border: 1px solid #ccd4bc; border-radius: 50%; }
+    .orbit:nth-child(2) { width: 57%; height: 57%; }
+    .sun { position: absolute; top: 16%; right: 19%; width: 47px; height: 47px; border-radius: 50%; background: #e1b96b; box-shadow: 0 0 0 11px #e1b96b20; }
+    .plant { position: relative; width: 170px; height: 225px; margin-top: 45px; }
+    .stem { position: absolute; bottom: 15px; left: 84px; height: 175px; width: 5px; background: #46614a; border-radius: 9px; transform: rotate(-4deg); }
+    .leaf { position: absolute; width: 83px; height: 49px; border-radius: 0 80px 0 80px; background: #718b5a; }
+    .leaf.one { top: 17px; left: 10px; transform: rotate(21deg); }
+    .leaf.two { top: 65px; left: 87px; transform: scaleX(-1) rotate(24deg); background: #45674f; }
+    .leaf.three { top: 100px; left: 7px; transform: rotate(22deg); background: #8ca16b; }
+    .pot { position: absolute; bottom: 0; left: 51px; width: 73px; height: 60px; background: #bb7358; clip-path: polygon(0 0,100% 0,85% 100%,15% 100%); border-radius: 4px; }
+    .art-label { position: absolute; bottom: 24px; font-size: 10px; letter-spacing: 3px; color: #6f7c62; }
+    .details { display: grid; grid-template-columns: repeat(3, 1fr); border-top: 1px solid #dcdfd2; border-bottom: 1px solid #dcdfd2; padding: 23px 0; gap: 24px; }
+    .detail-title { font-size: 14px; font-weight: 600; margin-bottom: 7px; }
+    .detail-title span { margin-right: 9px; color: #7d8e6a; font-size: 11px; }
+    .detail-text { font-size: 12px; color: #737b70; line-height: 1.7; }
+    footer { padding-top: 25px; color: #7c8476; font-size: 11px; line-height: 1.7; }
+    @media (max-width: 700px) {
+      .page { padding: 24px; }
+      main { grid-template-columns: 1fr; gap: 30px; padding: 60px 0 36px; min-height: 0; }
+      h1 { letter-spacing: -2px; }
+      .art { max-width: 330px; }
+      .details { gap: 22px; grid-template-columns: 1fr; }
+      footer { align-items: flex-start; flex-direction: column; gap: 5px; }
+    }
+    @media (prefers-reduced-motion: reduce) { button { transition: none; } }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header><div class="brand">goodcome<span>.</span></div><div class="status">我的第一站，已上线</div></header>
+    <main>
+      <section>
+        <p class="eyebrow">A SMALL START. A BIG HELLO.</p>
+        <h1>你好，世界。<br><span>很高兴见到你。</span></h1>
+        <p class="intro">一个小小的页面，一次全新的开始。<br>这里是我的互联网小角落，欢迎你来坐坐。</p>
+        <button id="hello" type="button">送自己一句好心情 <span aria-hidden="true">↗</span></button>
+        <div id="message" role="status" aria-live="polite">点一下，看看今天的小惊喜。</div>
+      </section>
+      <div class="art" role="img" aria-label="阳光下，一株绿植正在生长">
+        <div class="orbit"></div><div class="orbit"></div><div class="sun"></div>
+        <div class="plant"><div class="stem"></div><div class="leaf one"></div><div class="leaf two"></div><div class="leaf three"></div><div class="pot"></div></div>
+        <div class="art-label">GOOD THINGS TAKE ROOT.</div>
+      </div>
+    </main>
+    <section class="details" aria-label="关于这个小站">
+      <div><div class="detail-title"><span>01</span>从一个想法开始</div><div class="detail-text">把「我想试试」变成一个真正的网址。</div></div>
+      <div><div class="detail-title"><span>02</span>随时随地打开</div><div class="detail-text">电脑或手机，都有刚刚好的阅读体验。</div></div>
+      <div><div class="detail-title"><span>03</span>下一站，由我定义</div><div class="detail-text">作品、日常、灵感，故事才刚刚开始。</div></div>
+    </section>
+    <footer><span>© 2026 goodcome · 从这里开始生长</span><span>Made with curiosity. Hosted on GitHub Pages.</span></footer>
+  </div>
+  <script>
+    const messages = ['每一个小小的开始，都值得被认真对待。', '不用一下子很厉害，今天前进一步就很好。', '你看，一个想法已经有了自己的网址。', '愿今天有好天气，也有好心情。', '慢慢生长，也是一种很棒的力量。'];
+    let nextMessage = 0;
+    document.getElementById('hello').addEventListener('click', () => {
+      document.getElementById('message').textContent = messages[nextMessage];
+      nextMessage = (nextMessage + 1) % messages.length;
+    });
+  </script>
+</body>
+</html>
